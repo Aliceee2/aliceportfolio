@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo" data-field="brandName">Ваше Имя</div>
+      <button id="editToggle" class="btn btn-outline" type="button">Режим редактирования</button>
+    </nav>
+    <div class="container hero-content">
+      <p class="eyebrow">UI/UX DESIGNER</p>
+      <h1 data-field="heroTitle">Создаю интерфейсы, которые решают задачи бизнеса и радуют пользователей</h1>
+      <p class="subtitle" data-field="heroSubtitle">
+        Делаю исследования, прототипы и финальный UI. Работаю от гипотезы до запуска продукта.
+      </p>
+      <a class="btn" href="#contacts">Связаться со мной</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <div class="section-head">
+        <h2>Обо мне</h2>
+      </div>
+      <p class="about-text" data-field="aboutText">
+        Я UI/UX дизайнер с фокусом на e-commerce и SaaS. Помогаю продуктовым командам повышать конверсию и
+        упрощать пользовательский путь через данные, интервью и визуально чистый интерфейс.
+      </p>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>Услуги</h2>
+        </div>
+        <div id="services" class="grid-services"></div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2>Избранные проекты</h2>
+        <button id="addProjectBtn" class="btn btn-small hidden" type="button">+ Добавить проект</button>
+      </div>
+      <div id="projects" class="grid-projects"></div>
+    </section>
+
+    <section id="contacts" class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>Контакты</h2>
+        </div>
+        <div class="contacts">
+          <a data-field="email" href="mailto:hello@example.com">hello@example.com</a>
+          <a data-field="telegram" href="https://t.me/username" target="_blank" rel="noopener">@username</a>
+          <a data-field="behance" href="https://www.behance.net" target="_blank" rel="noopener">Behance</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="editorPanel" class="editor-panel hidden">
+    <h3>Панель управления</h3>
+    <p>Изменения сохраняются автоматически в браузере.</p>
+    <div class="panel-actions">
+      <button id="exportBtn" class="btn btn-small" type="button">Экспорт JSON</button>
+      <label class="btn btn-small btn-outline upload-btn">
+        Импорт JSON
+        <input id="importInput" type="file" accept=".json">
+      </label>
+      <button id="resetBtn" class="btn btn-small btn-danger" type="button">Сбросить демо-данные</button>
+    </div>
+  </aside>
+
+  <template id="projectTemplate">
+    <article class="project-card">
+      <img class="project-image" alt="">
+      <div class="project-content">
+        <h3 class="project-title"></h3>
+        <p class="project-description"></p>
+        <div class="project-meta">
+          <span class="tag"></span>
+          <a class="project-link" target="_blank" rel="noopener">Подробнее</a>
+        </div>
+        <div class="project-controls hidden">
+          <button class="btn btn-small edit-project" type="button">Редактировать</button>
+          <button class="btn btn-small btn-danger delete-project" type="button">Удалить</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <dialog id="projectDialog">
+    <form id="projectForm" method="dialog">
+      <h3 id="dialogTitle">Проект</h3>
+      <label>Название<input name="title" required></label>
+      <label>Описание<textarea name="description" rows="4" required></textarea></label>
+      <label>Категория<input name="category" placeholder="Mobile app, SaaS..." required></label>
+      <label>Ссылка<input name="link" type="url" placeholder="https://..." required></label>
+      <label>URL обложки<input name="image" type="url" placeholder="https://images..." required></label>
+      <div class="dialog-actions">
+        <button class="btn btn-small btn-outline" value="cancel" type="button" id="cancelDialogBtn">Отмена</button>
+        <button class="btn btn-small" value="default" type="submit">Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
